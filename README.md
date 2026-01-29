@@ -26,7 +26,4 @@ ResuMate helps you optimize your resume for Applicant Tracking Systems (ATS) by 
     streamlit run app.py
     ```
 
-## Configuration
-This app requires an API Key.
-1.  Obtain your API Key from your provider (Groq).
-2.  Set it in the `.env` file: `GROQ_API_KEY="your_key_here"`.
+
