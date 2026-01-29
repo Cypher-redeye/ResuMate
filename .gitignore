@@ -1,0 +1,9 @@
+.env
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pdf
+list_models.py
+available_models.txt
+.streamlit/secrets.toml
