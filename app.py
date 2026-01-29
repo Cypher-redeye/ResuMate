@@ -89,13 +89,13 @@ analyze_button = st.button("Analyze Resume")
 
 if analyze_button:
     if not api_key:
-        st.error("Please enter your Groq API Key in the sidebar.")
+        st.error("Please configure your API Key in the settings.")
     elif not uploaded_file:
         st.error("Please upload a PDF resume.")
     elif not jd_text:
         st.error("Please paste a job description.")
     else:
-        with st.spinner("⏳ Analyzing (Llama 3 is fast!)..."):
+        with st.spinner("⏳ Analyzing (AI is fast!)..."):
             # 1. Extract Text
             text = extract_text_from_pdf(uploaded_file)
             
@@ -195,7 +195,7 @@ if analyze_button:
                         st.error("Failed to parse the AI analysis. Please try again.")
 
                 except Exception as e:
-                     st.error(f"Groq API Error: {str(e)}")
+                     st.error(f"AI Error: {str(e)}")
             else:
                 st.error("Failed to read the PDF file. Please ensure it is a valid text-based PDF.")
 
@@ -203,8 +203,8 @@ if analyze_button:
 st.markdown("---")
 with st.expander("ℹ️ About this Tool"):
     st.markdown("""
-    This tool uses **Groq AI (Llama 3)** to compare your resume against a job description.
+    This tool uses **Advanced AI** to compare your resume against a job description.
     
-    **Privacy Note**: Your data is sent to Groq for analysis but is not stored by this application.
+    **Privacy Note**: Your data is sent to the AI enginge for analysis but is not stored by this application.
     """)
 st.markdown("Made with ❤️ for Job Seekers")
