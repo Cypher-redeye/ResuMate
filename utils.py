@@ -77,8 +77,9 @@ def parse_json_response(response_text):
 
 # Prompt Template
 ANALYSIS_PROMPT = """
-You are a highly experienced Senior Technical Recruiter and ATS Optimization Expert. 
-Your task is to evaluate the provided resume against the given Job Description (JD). 
+You are a strict, no-nonsense Senior Technical Recruiter and ATS Optimization Expert. 
+Your task is to brutally evaluate the provided resume against the given Job Description (JD). 
+Do not sugarcoat your feedback. Be direct and critical. Point out every flaw, missing skill, and weakness. 
 
 Please provide a detailed analysis in a strictly structured JSON format. 
 Do not include any introductory or concluding text, only the valid JSON object.
