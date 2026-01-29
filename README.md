@@ -1,15 +1,23 @@
-# ATS Resume Optimizer (Groq Edition) - User Guide
+# ResuMate
 
-## Overview
-This application helps you optimize your resume for Applicant Tracking Systems (ATS) by comparing it against a Job Description (JD) using the ultra-fast **Groq** AI inference engine (Llama 3).
+**Your AI-powered partner for landing the perfect job.**
+
+ResuMate helps you optimize your resume for Applicant Tracking Systems (ATS) by comparing it against a Job Description (JD) using advanced AI.
+
+## Features
+- **Match Percentage**: See exactly how well your resume fits the role.
+- **Keyword Gap Analysis**: Find out which technical skills you are missing.
+- **Section-by-Section Review**: Get actionable feedback for improvements.
+- **ATS Compatibility Check**: Ensure your resume is machine-readable.
 
 ## Setup & Running
 
-1.  **Open Terminal**: Navigate to the project directory:
+1.  **Clone the Repo**:
     ```bash
-    cd ATS_Resume_Optimizer
+    git clone https://github.com/Cypher-redeye/ResuMate.git
+    cd ResuMate
     ```
-2.  **Install Dependencies** (if you haven't already):
+2.  **Install Dependencies**:
     ```bash
     pip install -r requirements.txt
     ```
@@ -18,22 +26,7 @@ This application helps you optimize your resume for Applicant Tracking Systems (
     streamlit run app.py
     ```
 
-## API Key Setup
-1.  Get a free API Key from [console.groq.com/keys](https://console.groq.com/keys).
-2.  Open the `.env` file in the project folder.
-3.  Paste your key: `GROQ_API_KEY="gsk_..."`
-4.  Restart the app.
-
-## Usage Flow
-1.  **Upload Resume**: Click "Browse files" to upload your PDF resume.
-2.  **Job Description**: Paste the full job description text.
-3.  **Analyze**: Click the "Analyze Resume" button.
-    > [!TIP]
-    > Groq is incredibly fast, so results should appear almost instantly!
-
-## Results
-- **Match Score**: See how well you fit the role.
-- **Keyword Gap**: Identify missing technical keywords.
-- **Critical Skills**: See if you are missing any required certifications or hard skills.
-- **Section Advice**: Get specific tips for your Summary, Projects, and Experience.
-- **ATS Check**: Ensure your PDF formatting is machine-readable.
+## Configuration
+This app requires an API Key.
+1.  Obtain your API Key from your provider (Groq).
+2.  Set it in the `.env` file: `GROQ_API_KEY="your_key_here"`.
