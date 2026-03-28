@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from utils import extract_text_from_pdf, get_groq_response, parse_json_response, ANALYSIS_PROMPT
+from utils import extract_text_from_pdf, get_gemini_response, parse_json_response, ANALYSIS_PROMPT
 import time
 import os
 from dotenv import load_dotenv
@@ -57,15 +57,15 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # API Key Handling (Local .env or Cloud Secrets)
-api_key = os.getenv("GROQ_API_KEY")
+api_key = os.getenv("GEMINI_API_KEY")
 if not api_key:
     try:
-        api_key = st.secrets["GROQ_API_KEY"]
+        api_key = st.secrets["GEMINI_API_KEY"]
     except:
         api_key = None
 
 if not api_key:
-    st.warning("⚠️ **API Key Missing**: Please set `GROQ_API_KEY` in your `.env` file (local) or Streamlit Secrets (cloud).")
+    st.warning("⚠️ **API Key Missing**: Please set `GEMINI_API_KEY` in your `.env` file (local) or Streamlit Secrets (cloud).")
 
 
 # Main Title and Description
@@ -102,7 +102,7 @@ if analyze_button:
             if text:
                 # 2. Get AI Response
                 try:
-                    response_text = get_groq_response(ANALYSIS_PROMPT, text, jd_text, api_key)
+                    response_text = get_gemini_response(ANALYSIS_PROMPT, text, jd_text, api_key)
                     
                     # 3. Parse Response
                     data = parse_json_response(response_text)

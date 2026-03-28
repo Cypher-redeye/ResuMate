@@ -1,5 +1,5 @@
 import os
-from groq import Groq
+import google.generativeai as genai
 import PyPDF2 as pdf
 import json
 import logging
@@ -22,11 +22,12 @@ def extract_text_from_pdf(uploaded_file):
         logging.error(f"Error extracting PDF text: {e}")
         return None
 
-def get_groq_response(input_prompt, pdf_content, jd_text, api_key):
+def get_gemini_response(input_prompt, pdf_content, jd_text, api_key):
     """
-    Sends the resume content and JD to Groq and retrieves the analysis.
+    Sends the resume content and JD to Google Gemini API and retrieves the analysis.
     """
-    client = Groq(api_key=api_key)
+    genai.configure(api_key=api_key)
+    model = genai.GenerativeModel('gemini-2.5-flash')
     
     # Construct the full prompt
     full_prompt = f"""
@@ -40,23 +41,10 @@ def get_groq_response(input_prompt, pdf_content, jd_text, api_key):
     """
     
     try:
-        completion = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[
-                {
-                    "role": "user",
-                    "content": full_prompt
-                }
-            ],
-            temperature=0.7,
-            max_tokens=2048,
-            top_p=1,
-            stream=False,
-            stop=None,
-        )
-        return completion.choices[0].message.content
+        response = model.generate_content(full_prompt)
+        return response.text
     except Exception as e:
-        logging.error(f"Error communicating with Groq: {e}")
+        logging.error(f"Error communicating with Gemini: {e}")
         raise e
 
 def parse_json_response(response_text):
